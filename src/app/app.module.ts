@@ -4,21 +4,21 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegisterComponent } from './components/auth/register/register.component';
 import { MaterialModule } from './material.module';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
