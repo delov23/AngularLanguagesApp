@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-pink);
+$accent: mat-palette($mat-blue);
+$contrast: mat-palette($mat-teal);
+
+.bg-primary-ng {
+  background-color: mat-color($primary);
+}
+
+.bg-accent-ng {
+  background-color: mat-color($accent);
+}
+
+.bg-contrast-ng {
+  background-color: mat-color($contrast);
+}
+
+.text-primary-ng {
+  color: mat-color($primary);
+}
+
+.text-accent.ng {
+  color: mat-color($accent);  
+}
+
+.text-contrast-ng {
+  color: mat-color($contrast);
+}
+
+.mat-tab-label {
+  color: black;
+  font-size: 14pt;
+}
+
+th, td {
+  font-size: 16pt !important;
+  text-align: center !important;
+  width: 50%;
+}
+
+table {
+  border: 1px solid #989898;
+}
+
+main {
+  min-height: calc(100vh - 100px) !important;
+}
+
+footer {
+  height: 50px !important;
+}
+
+.fix-margin-top {
+  margin-top: 20px !important; 
+}
+
+.fix-row {
+  margin-left: 0 !important; 
+  margin-right: 0 !important;
+}
