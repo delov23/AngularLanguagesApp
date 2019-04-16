@@ -3,6 +3,10 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
+body {
+  background-color: rgb(48, 48, 48);
+}
+
 $primary: mat-palette($mat-pink);
 $accent: mat-palette($mat-blue);
 $contrast: mat-palette($mat-teal);
@@ -61,4 +65,12 @@ footer {
 .fix-row {
   margin-left: 0 !important; 
   margin-right: 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: #c6c6c6;
+}
+
+input, textarea, select {
+  color: silver !important;
 }

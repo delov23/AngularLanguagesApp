@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { AuthModule } from './components/auth/auth.module';
+import { SharedModule } from './components/shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,10 +18,13 @@ import { AuthModule } from './components/auth/auth.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    AuthModule
+    AuthModule,
+    SharedModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

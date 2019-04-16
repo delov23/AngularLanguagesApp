@@ -11,6 +11,8 @@ import {
   MatTabsModule,
   MatBadgeModule,
   MatProgressBarModule,
+  MatFormFieldModule,
+  MatInputModule,
 } from '@angular/material';
 
 let modules = [
@@ -23,7 +25,9 @@ let modules = [
   MatTableModule,
   MatTabsModule,
   MatBadgeModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatFormFieldModule,
+  MatInputModule
 ];
 
 @NgModule({
