@@ -1,0 +1,47 @@
+<main>
+  <section class="bgimg">
+    <div class="bgimg-inside">
+      <h1 class="text-center display-1 text-landing text-light">A new journey is waiting for you. . .</h1>
+      <br />
+    </div>
+  </section>
+  <section class="row fix-row">
+    <div class="col-md-6 bg-dark text-light">
+      <h1 class="text-center"><mat-icon style="font-size: 60px; padding-right: 60px">dashboard</mat-icon></h1>
+      <h1 class="text-center">Why Lingo?</h1>
+      <p class="text-center landing-caption">Fusce et egestas tellus. Sed eget dapibus purus, id elementum arcu. Nam dignissim nec mauris vel luctus. Curabitur ut mattis sapien, quis dapibus felis. Pellentesque ac augue id arcu ultrices gravida vel ut nisi. Etiam sed porttitor libero, ut bibendum libero. Morbi dictum hendrerit tristique.</p>
+    </div>
+    <div class="col-md-6 bg-light">
+        <h1 class="text-center"><mat-icon style="font-size: 60px; padding-right: 60px">favorite_border</mat-icon></h1>
+        <h1 class="text-center">Our Team</h1>
+        <p class="text-center landing-caption">Fusce et egestas tellus. Sed eget dapibus purus, id elementum arcu. Nam dignissim nec mauris vel luctus. Curabitur ut mattis sapien, quis dapibus felis. Pellentesque ac augue id arcu ultrices gravida vel ut nisi. Etiam sed porttitor libero, ut bibendum libero. Morbi dictum hendrerit tristique.</p>
+    </div>
+  </section>
+  <section class="row fix-row bg-primary-ng text-light">
+    <div class="col-md-12">
+      <h1 class="text-center"><mat-icon style="font-size: 60px; padding-right: 60px">g_translate</mat-icon></h1>
+      <h1 class="text-center">
+        And most importantly...
+        <br />
+        We want to help, not your money.
+        <br />
+        Why though?
+      </h1>
+      <p class="text-center landing-caption">Cras porttitor turpis ut sem imperdiet, sed mollis turpis rhoncus. Curabitur bibendum rhoncus finibus. Pellentesque aliquet non metus nec ullamcorper. Quisque eu felis mattis, placerat elit sed, eleifend erat. Sed massa diam, sodales non pulvinar ac, bibendum at leo. Cras et nunc justo.</p>
+    </div>
+  </section>
+  <section class="row fix-row bg-contrast-ng text-light">
+    <div class="col-md-12">
+      <h1 class="text-center"><mat-icon style="font-size: 60px; padding-right: 60px">grade</mat-icon></h1>
+      <h1 class="text-center">
+        Okay, now we can finally thank you
+      </h1>
+      <h2 class="text-center">Here are our lovely gold sponsors</h2>
+      <div class="col-md-6 offset-3">
+        <span *ngFor="let imageUrl of imageUrls">
+          <img width="32%" src="{{imageUrl}}" class="img-thumbnail img-hover" />
+        </span>
+      </div>
+    </div>
+  </section>
+</main>

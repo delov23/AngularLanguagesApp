@@ -1,6 +1,6 @@
 <nav class="navbar sticky-top navbar-light bg-primary-ng lg">
   <div flexLayoutAlign="start">
-    <a class="navbar-brand" href="#">Lingo</a>
+    <a class="navbar-brand" routerLink="/">Lingo</a>
     <span *ngIf="isAdmin && isAuth">
       <button class="navbar-item" mat-button><mat-icon>inbox</mat-icon> Requests</button>
       <button class="navbar-item" mat-button ><mat-icon>library_add</mat-icon> Course</button>
@@ -15,7 +15,7 @@
   <div flexLayoutAlign="end">
     <span *ngIf="isAuth; else anonymous">
       <button class="navbar-item" mat-icon-button ><mat-icon>person</mat-icon></button>
-      <button class="navbar-item" mat-icon-button ><mat-icon>exit_to_app</mat-icon></button>
+      <button (click)="logout()" class="navbar-item" mat-icon-button ><mat-icon>exit_to_app</mat-icon></button>
     </span>
     <ng-template #anonymous>
       <button class="navbar-item" routerLink="auth/register" mat-button >Register</button>

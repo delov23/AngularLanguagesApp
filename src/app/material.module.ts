@@ -27,7 +27,7 @@ let modules = [
   MatBadgeModule,
   MatProgressBarModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
 ];
 
 @NgModule({

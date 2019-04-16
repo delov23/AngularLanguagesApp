@@ -18,7 +18,6 @@ const declarations = [
     imports: [
         CommonModule,
         AuthRoutingModule,
-        FormsModule,
         ReactiveFormsModule,
         MaterialModule
     ],

@@ -10,11 +10,15 @@ import { AuthModule } from './components/auth/auth.module';
 import { SharedModule } from './components/shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LandingComponent } from './components/home/landing/landing.component';
+import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
+    LandingComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     AuthModule,
     SharedModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,8 +7,15 @@ const URL = 'http://localhost:9999/';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  // TODO
+  // ADD IUser
+
   registerUser(body: Object) {
     return this.http.post(`${URL}auth/signup`, body);
+  }
+
+  loginUser(body: Object) {
+    return this.http.post(`${URL}auth/signin`, body);
   }
 
   isAuthenticated() {
@@ -16,10 +23,15 @@ export class AuthService {
   }
 
   isAdmin() {
+    if (sessionStorage.getItem('isAdmin') === null || sessionStorage.getItem('isAdmin') === undefined) {
+      return false;
+    }
     return sessionStorage.getItem('isAdmin').toString() === 'true';
   }
 
-  saveUser() {
-
+  saveUser(user: Object) {
+    sessionStorage.setItem('token', user['token']);
+    sessionStorage.setItem('isAdmin', user['role'] === 'Admin' ? 'true' : 'false');
+    sessionStorage.setItem('userId', user['userId']);
   }
 }
