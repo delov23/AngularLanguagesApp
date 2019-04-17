@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-const URL = 'http://localhost:9999/';
+import { API_URL as URL } from './api-keys';
 
 @Injectable()
 export class AuthService {
@@ -9,6 +8,10 @@ export class AuthService {
 
   // TODO
   // ADD IUser
+
+  get token() {
+    return sessionStorage.getItem('token');
+  }
 
   registerUser(body: Object) {
     return this.http.post(`${URL}auth/signup`, body);

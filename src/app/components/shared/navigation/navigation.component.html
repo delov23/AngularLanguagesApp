@@ -2,24 +2,23 @@
   <div flexLayoutAlign="start">
     <a class="navbar-brand" routerLink="/">Lingo</a>
     <span *ngIf="isAdmin && isAuth">
-      <button class="navbar-item" mat-button><mat-icon>inbox</mat-icon> Requests</button>
-      <button class="navbar-item" mat-button ><mat-icon>library_add</mat-icon> Course</button>
-      <button class="navbar-item" mat-button ><mat-icon>library_add</mat-icon> Lesson</button>
+      <button routerLink="/applications/all" class="navbar-item" mat-button><mat-icon>inbox</mat-icon> Requests</button>
+      <button routerLink="/course/create" class="navbar-item" mat-button ><mat-icon>library_add</mat-icon> Course</button>
+      <button routerLink="/lesson/create" class="navbar-item" mat-button ><mat-icon>library_add</mat-icon> Lesson</button>
     </span>
 
     <span *ngIf="!isAdmin && isAuth">
-      <button class="navbar-item" mat-button >About</button>
-      <button class="navbar-item" mat-button >Join Our Team</button>
+      <button routerLink="/application/apply" class="navbar-item" mat-button >Join Our Team</button>
     </span>
   </div>
   <div flexLayoutAlign="end">
     <span *ngIf="isAuth; else anonymous">
-      <button class="navbar-item" mat-icon-button ><mat-icon>person</mat-icon></button>
+      <button routerLink="/user/profile" class="navbar-item" mat-icon-button ><mat-icon>person</mat-icon></button>
       <button (click)="logout()" class="navbar-item" mat-icon-button ><mat-icon>exit_to_app</mat-icon></button>
     </span>
     <ng-template #anonymous>
-      <button class="navbar-item" routerLink="auth/register" mat-button >Register</button>
-      <button class="navbar-item" routerLink="auth/login" mat-button >Login</button>
+      <button routerLink="/auth/register" class="navbar-item" mat-button >Register</button>
+      <button routerLink="/auth/login" class="navbar-item" mat-button >Login</button>
     </ng-template>
   </div>
 </nav>

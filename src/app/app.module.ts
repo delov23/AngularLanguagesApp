@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './components/home/landing/landing.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+import { CourseModule } from './components/course/course.module';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,10 @@ import { DashboardComponent } from './components/home/dashboard/dashboard.compon
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    AuthModule,
     SharedModule,
     CoreModule,
+    AuthModule,
+    CourseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

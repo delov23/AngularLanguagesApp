@@ -1,21 +1,13 @@
 <main class="container fix-margin-top">
   <div class="row fix-row">
-    <mat-card style="width: 32%; margin-right: 2px;" *ngFor="let course of (courses | async)">
+    <mat-card style="width: 30%; margin-right: 3%; margin-bottom: 3%;" *ngFor="let course of (courses$ | async)?.courses">
       <mat-card-header>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        <mat-card-title>{{course.language}}</mat-card-title>
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+      <img mat-card-image src="{{course.flag}}" alt="Flag">
+      <mat-card-actions fxLayoutAlign="end">
+        <a class="no-deco" *ngIf="!isAdmin" style="width: 100%" mat-raised-button color="primary" routerLink="/course/lessons/{{course._id}}">Enroll</a>
+        <a class="no-deco" *ngIf="isAdmin" style="width: 100%" mat-raised-button color="warn" routerLink="/course/lessons/{{course._id}}">Manage lessons</a>
       </mat-card-actions>
     </mat-card>
   </div>

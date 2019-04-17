@@ -13,6 +13,7 @@ import {
   MatProgressBarModule,
   MatFormFieldModule,
   MatInputModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 
 let modules = [
@@ -28,6 +29,7 @@ let modules = [
   MatProgressBarModule,
   MatFormFieldModule,
   MatInputModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({

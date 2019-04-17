@@ -3,9 +3,10 @@ import { CreateCourseComponent } from './create-course/create-course.component';
 import { CommonModule } from '@angular/common';
 import { CourseRoutingModule } from './course-routing.module';
 import { MaterialModule } from 'src/app/material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CourseLessonsComponent } from './course-lessons/course-lessons.component';
 
-const declarations = [CreateCourseComponent];
+const declarations = [CreateCourseComponent, CourseLessonsComponent];
 
 @NgModule({
     declarations,
