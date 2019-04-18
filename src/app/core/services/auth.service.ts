@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL as URL } from './api-keys';
+import { IUser, IUserEntity } from 'src/app/components/shared/models/IUser';
 
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient) {}
-
-  // TODO
-  // ADD IUser
 
   get token() {
     return sessionStorage.getItem('token');
@@ -17,11 +15,11 @@ export class AuthService {
     return sessionStorage.getItem('userId');
   }
 
-  registerUser(body: Object) {
+  registerUser(body: IUser) {
     return this.http.post(`${URL}auth/signup`, body);
   }
 
-  loginUser(body: Object) {
+  loginUser(body: IUser) {
     return this.http.post(`${URL}auth/signin`, body);
   }
 
@@ -36,9 +34,9 @@ export class AuthService {
     return sessionStorage.getItem('isAdmin').toString() === 'true';
   }
 
-  saveUser(user: Object) {
-    sessionStorage.setItem('token', user['token']);
-    sessionStorage.setItem('isAdmin', user['role'] === 'Admin' ? 'true' : 'false');
-    sessionStorage.setItem('userId', user['userId']);
+  saveUser(user: IUserEntity) {
+    sessionStorage.setItem('token', user.token);
+    sessionStorage.setItem('isAdmin', user.role === 'Admin' ? 'true' : 'false');
+    sessionStorage.setItem('userId', user.userId);
   }
 }

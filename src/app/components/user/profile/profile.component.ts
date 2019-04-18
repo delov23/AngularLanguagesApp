@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IUser } from '../../shared/models/IUser';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: /* IUser */ any;
+  user: IUser;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {

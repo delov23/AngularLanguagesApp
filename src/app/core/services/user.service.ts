@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL as URL } from './api-keys';
+import { IUser } from 'src/app/components/shared/models/IUser';
 
 @Injectable()
 export class UserService {
@@ -11,6 +12,6 @@ export class UserService {
   }
 
   getUserProfile(userId: string) {
-    return this.http.get<{ message: string; user: any /* IUser */ }>(`${URL}user/profile/${userId}`)
+    return this.http.get<{ message: string; user: IUser }>(`${URL}user/profile/${userId}`)
   }
 }

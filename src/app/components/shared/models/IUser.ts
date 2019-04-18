@@ -8,3 +8,9 @@ export interface IUser {
     password?: string;
     hashedPassword?: string;
 }
+
+export interface IUserEntity {
+    token: string;
+    userId: string;
+    role: string;
+}
