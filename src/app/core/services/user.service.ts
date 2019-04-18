@@ -10,4 +10,7 @@ export class UserService {
     return this.http.post<{ message: string; }>(`${URL}user/addCourse`, { courseId, userId });
   }
 
+  getUserProfile(userId: string) {
+    return this.http.get<{ message: string; user: any /* IUser */ }>(`${URL}user/profile/${userId}`)
+  }
 }

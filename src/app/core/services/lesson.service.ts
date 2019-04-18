@@ -5,6 +5,7 @@ import { ILesson } from 'src/app/components/shared/models/ILesson';
 
 @Injectable()
 export class LessonService {
+
   constructor(private http: HttpClient) { }
 
   getLessonById(id: string) {
@@ -14,4 +15,9 @@ export class LessonService {
   removeLessonById(id: string) {
     return this.http.delete<{ message: string; }>(`${URL}lesson/remove/${id}`);
   }
+
+  createLesson(body) {
+    return this.http.post<{ message: string }>(`${URL}lesson/create`, body);
+  }
+
 }

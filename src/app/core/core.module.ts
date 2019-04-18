@@ -12,6 +12,7 @@ import { LessonService } from './services/lesson.service';
 import { LessonResolver } from './resolvers/lesson.resolver';
 import { UserService } from './services/user.service';
 import { AdminGuard } from './guards/admin.guard';
+import { UserResolver } from './resolvers/user.resolver';
 
 @NgModule({
     imports: [
@@ -28,6 +29,7 @@ import { AdminGuard } from './guards/admin.guard';
         LazyAnonymousGuard,
         AdminGuard,
         LessonResolver,
+        UserResolver,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,

@@ -1,3 +1,124 @@
-<p>
-  lesson-create works!
-</p>
+<main class="container">
+  <h1 class="text-center text-silver">Create Lesson</h1>
+  <form [formGroup]="form" (submit)="createLesson()">
+    <mat-form-field style="width: 100%">
+        <input 
+        matInput
+        type="text"
+        formControlName="title" />
+      <mat-placeholder class="placeholder">Lesson Title</mat-placeholder>
+    </mat-form-field>
+    <br />
+    <mat-form-field style="width: 100%">
+        <input 
+        matInput
+        type="text"
+        formControlName="image" />
+      <mat-hint>Should be a URL which starts with http and ends with either .jpg or .png</mat-hint>
+      <mat-placeholder class="placeholder">Thumbnail Image</mat-placeholder>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%; margin-top: 15px;">
+      <mat-label>Course</mat-label>
+      <mat-select formControlName="course">
+        <mat-option>Choose a course</mat-option>
+        <mat-option *ngFor="let course of (courses$ | async)?.courses" [value]="course._id">
+          {{course.language}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('course').hasError('required')">Please choose a course for this lesson</mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%;">
+        <input 
+        matInput
+        type="text"
+        formControlName="grammar1" />
+      <mat-placeholder class="placeholder">Grammar Topic</mat-placeholder>
+    </mat-form-field>
+    <mat-form-field style="width: 100%">
+        <textarea 
+        matInput
+        type="textarea"
+        formControlName="grammar2"
+        rows="3"
+        ></textarea>
+      <mat-placeholder class="placeholder">Grammar Content</mat-placeholder>
+    </mat-form-field>
+    <mat-form-field style="width: 100%">
+        <input 
+        matInput
+        type="text"
+        formControlName="grammar3" />
+      <mat-placeholder class="placeholder">Grammar Example</mat-placeholder>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" (click)="addWord()">Add Word</button>
+    <div formArrayName="words" *ngFor="let word of form.get('words')['controls']; let i = index;" fxLayout="row" style="margin-top: 10px">
+      <div formGroupName="{{i}}">
+        <mat-form-field class="float-left" style="width: 49%">
+          <input 
+          matInput
+          formControlName="word"
+          type="text" />
+          <mat-placeholder class="placeholder">Word</mat-placeholder>
+        </mat-form-field>
+        <mat-form-field class="float-right" style="width: 49%">
+          <input 
+          matInput
+          type="text"
+          formControlName="translation" />
+          <mat-placeholder class="placeholder">Translation</mat-placeholder>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="addQuestion()">Add Question</button>
+    <div formArrayName="test" *ngFor="let question of form.get('test')['controls']; let i = index;" fxLayout="row" style="margin-top: 10px">
+      <div formGroupName="{{i}}">
+        <mat-form-field class="float-left" style="width: 49%">
+          <input 
+          matInput
+          formControlName="question"
+          type="text" />
+          <mat-placeholder class="placeholder">Question</mat-placeholder>
+        </mat-form-field>
+        <mat-form-field class="float-right" style="width: 49%">
+          <input 
+          matInput
+          type="text"
+          formControlName="answer" />
+          <mat-placeholder class="placeholder">Answer Value</mat-placeholder>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+          <input 
+          matInput
+          formControlName="a1"
+          type="text" />
+          <mat-placeholder class="placeholder">Answer Option 1</mat-placeholder>
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+          <input 
+          matInput
+          formControlName="a2"
+          type="text" />
+          <mat-placeholder class="placeholder">Answer Option 2</mat-placeholder>
+        </mat-form-field>
+        <mat-form-field class="col-md-4">
+          <input 
+          matInput
+          formControlName="a3"
+          type="text" />
+          <mat-placeholder class="placeholder">Answer Option 3</mat-placeholder>
+        </mat-form-field>
+      </div>
+      <hr class="bg-primary-ng" />
+    </div>
+
+    <br />
+    <div class="text-center">
+      <button [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
+    </div>
+  </form>
+</main>
