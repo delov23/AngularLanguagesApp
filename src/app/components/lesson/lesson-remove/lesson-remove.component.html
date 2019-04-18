@@ -1,3 +1,20 @@
-<p>
-  lesson-remove works!
-</p>
+<main class="container">
+  <h1 class="text-center text-light">Are you sure that you want to remove this lesson?</h1>
+  <br />
+  <div class="row fix-row">
+    <div class="col-md-4">
+      <img class="img-thumbnail" width="100%" src="{{lesson.image}}" />
+    </div>
+    <div class="col-md-8 text-light">
+      <h2>Title: <span class="text-contrast-ng">{{lesson.title}}</span></h2>
+      <h3>Word count: <span class="text-contrast-ng">{{lesson.words.length}}</span></h3>
+      <h3>Test questions: <span class="text-contrast-ng">{{lesson.test.length}}</span></h3>
+      <h3>Grammar topic: <span class="text-contrast-ng">{{lesson.grammar[0]}}</span></h3>
+      <h3>Course: <img class="rounded" style="border: 2px solid white" width="50px" src="{{lesson.course.flag}}" /></h3>
+      <h3>Preview Lesson: <button mat-raised-button class="bg-contrast-ng" routerLink="/lesson/preview/{{lesson._id}}"><mat-icon>cast</mat-icon></button></h3>
+    </div>
+  </div>
+  <div class="row fix-row">
+    <button (click)="removeLesson()" class="btn-block" mat-raised-button color="warn">Remove</button>
+  </div>
+</main>

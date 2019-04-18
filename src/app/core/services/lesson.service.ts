@@ -10,4 +10,8 @@ export class LessonService {
   getLessonById(id: string) {
     return this.http.get<{ lesson: ILesson; message: string; }>(`${URL}lesson/${id}`);
   }
+
+  removeLessonById(id: string) {
+    return this.http.delete<{ message: string; }>(`${URL}lesson/remove/${id}`);
+  }
 }

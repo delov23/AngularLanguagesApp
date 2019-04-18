@@ -12,8 +12,8 @@ import { LessonModule } from './components/lesson/lesson.module';
 
 // Lazy Loading Issue
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: LandingComponent, canActivate: [AnonymousGuard] },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: '', pathMatch: 'full', canActivate: [AnonymousGuard], component: LandingComponent },
+  { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent },
   { path: 'auth', canLoad: [LazyAnonymousGuard], loadChildren: () => AuthModule },
   { path: 'course', canLoad: [LazyAuthGuard], loadChildren: () => CourseModule },
   { path: 'lesson', canLoad: [LazyAuthGuard], loadChildren: () => LessonModule }

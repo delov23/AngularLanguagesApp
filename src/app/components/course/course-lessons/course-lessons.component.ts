@@ -13,11 +13,12 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class CourseLessonsComponent implements OnInit {
   lessons$: Observable<{ lessons: ILesson[], message: string; }>;
   isAdmin: boolean;
+  courseId: string;
   constructor(private courseService: CourseService, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit() {
     this.isAdmin = this.authService.isAdmin();
-    let id: string = this.route.snapshot.params['id'];
-    this.lessons$ = this.courseService.getLessonsByCourse(id);
+    this.courseId = this.route.snapshot.params['id'];
+    this.lessons$ = this.courseService.getLessonsByCourse(this.courseId);
   }
 }

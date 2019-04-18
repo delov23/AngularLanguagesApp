@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ILesson } from '../../shared/models/ILesson';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LessonService } from 'src/app/core/services/lesson.service';
 
 @Component({
   selector: 'app-lesson-remove',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lesson-remove.component.css']
 })
 export class LessonRemoveComponent implements OnInit {
-
-  constructor() { }
+  lesson: ILesson;
+  lessonId: string;
+  constructor(private route: ActivatedRoute, private lessonSevice: LessonService, private router: Router) { }
 
   ngOnInit() {
+    this.lesson = this.route.snapshot.data['lesson']['lesson'];
+    this.lessonId = this.route.snapshot.params['id'];
+  }
+
+  removeLesson() {
+    this.lessonSevice.removeLessonById(this.lessonId)
+      .subscribe((res) => {
+        this.router.navigate(['/course/lessons', this.lesson.course._id]);
+      })
   }
 
 }
