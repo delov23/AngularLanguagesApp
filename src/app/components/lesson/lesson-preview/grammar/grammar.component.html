@@ -1,0 +1,19 @@
+<section class="fix-margin-top">
+  <h2 class="text-center text-light">{{grammar[0]}}</h2>
+  <mat-card class="bg-accent-ng">
+    <p class="grammar-description">{{grammar[1]}}</p>
+  </mat-card>
+  <br />
+  <mat-card class="bg-contrast-ng">
+    <p class="grammar-description">{{grammar[2]}}</p>
+  </mat-card>
+  <br />
+  <div class="navbar">
+    <div>
+      <button mat-raised-button color="primary" (click)="selectTab(0)"><mat-icon>arrow_left</mat-icon> BACK</button>
+    </div>
+    <div>
+      <button (click)="selectTab(2)" mat-raised-button color="primary">NEXT<mat-icon>arrow_right</mat-icon></button>
+    </div>  
+  </div>
+</section>

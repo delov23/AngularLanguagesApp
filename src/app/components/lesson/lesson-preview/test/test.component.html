@@ -1,0 +1,22 @@
+<section class="fix-margin-top">
+  <h1 fxLayoutAlign="center" class="lesson-heading text-center text-light"><span matBadge="{{test.length - this.correctAnswers || '✔'}}" matBadgeOverlap="false">Test</span></h1>
+  <div *ngFor="let q of test">  
+    <mat-card>
+      <h3>{{q.question}}</h3>
+      <div class="row fix-row">
+        <button (click)="handleAnswer($event)" mat-stroked-button [attr.data-correct]="q.answer === 1" class="col-md-4 text-contrast-ng">{{q.a1}}</button>
+        <button (click)="handleAnswer($event)" mat-stroked-button [attr.data-correct]="q.answer === 2" class="col-md-4 text-contrast-ng">{{q.a2}}</button>
+        <button (click)="handleAnswer($event)" mat-stroked-button [attr.data-correct]="q.answer === 3" class="col-md-4 text-contrast-ng">{{q.a3}}</button>
+      </div>
+    </mat-card>
+    <br />
+  </div>
+  <div class="navbar">
+    <div>
+      <button mat-raised-button color="primary" (click)="selectTab(1)"><mat-icon>arrow_left</mat-icon> BACK</button>
+    </div>
+    <div>
+      <button (click)="completeLesson()" [disabled]="disableDone" mat-raised-button color="primary" flexLayoutAlign="end">COMPLETE<mat-icon>check</mat-icon></button>
+    </div>  
+  </div>
+</section>

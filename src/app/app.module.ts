@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './components/home/landing/landing.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 import { CourseModule } from './components/course/course.module';
+import { LessonModule } from './components/lesson/lesson.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CourseModule } from './components/course/course.module';
     CoreModule,
     AuthModule,
     CourseModule,
+    LessonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

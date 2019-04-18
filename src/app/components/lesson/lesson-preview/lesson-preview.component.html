@@ -1,0 +1,13 @@
+<main class="container">
+  <mat-tab-group color="primary" (selectedIndexChange)="selectTab($event)" [selectedIndex]="selectedIndex" mat-stretch-tabs>
+    <mat-tab label="Vocabulary">
+      <app-vocabulary (selectTabEmitter)="selectTab($event)" [words]="lesson.words"></app-vocabulary>
+    </mat-tab>
+    <mat-tab label="Grammar">
+      <app-grammar (selectTabEmitter)="selectTab($event)" [grammar]="lesson.grammar"></app-grammar>
+    </mat-tab>
+    <mat-tab label="Test">
+      <app-test (completeLessonEmitter)="completeLesson()" (selectTabEmitter)="selectTab($event)" [test]="lesson.test"></app-test>
+    </mat-tab>
+  </mat-tab-group>
+</main>

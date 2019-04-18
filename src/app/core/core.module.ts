@@ -8,6 +8,10 @@ import { LazyAnonymousGuard } from './guards/anonymous-lazy.guard';
 import { CourseService } from './services/course.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { LessonService } from './services/lesson.service';
+import { LessonResolver } from './resolvers/lesson.resolver';
+import { UserService } from './services/user.service';
+import { AdminGuard } from './guards/admin.guard';
 
 @NgModule({
     imports: [
@@ -15,11 +19,15 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     ],
     providers: [
         AuthService,
+        CourseService,
+        LessonService,
+        UserService,
+        AuthGuard,
         LazyAuthGuard,
         AnonymousGuard,
-        AuthGuard,
         LazyAnonymousGuard,
-        CourseService,
+        AdminGuard,
+        LessonResolver,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,

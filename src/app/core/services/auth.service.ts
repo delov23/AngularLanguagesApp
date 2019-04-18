@@ -13,6 +13,10 @@ export class AuthService {
     return sessionStorage.getItem('token');
   }
 
+  get userId() {
+    return sessionStorage.getItem('userId');
+  }
+
   registerUser(body: Object) {
     return this.http.post(`${URL}auth/signup`, body);
   }

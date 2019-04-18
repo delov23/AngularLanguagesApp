@@ -19,4 +19,5 @@ export class CourseService {
   createCourse(body: ICourse) {
     return this.http.post<{ message: string; }>(`${URL}course/create`, body);
   }
+
 }

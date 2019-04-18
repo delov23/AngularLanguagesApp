@@ -8,13 +8,15 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { LazyAnonymousGuard } from './core/guards/anonymous-lazy.guard';
 import { LazyAuthGuard } from './core/guards/auth-lazy.guard';
 import { CourseModule } from './components/course/course.module';
+import { LessonModule } from './components/lesson/lesson.module';
 
 // Lazy Loading Issue
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: LandingComponent, canActivate: [AnonymousGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'auth', canLoad: [LazyAnonymousGuard], loadChildren: () => AuthModule },
-  { path: 'course', canLoad: [LazyAuthGuard], loadChildren: () => CourseModule }
+  { path: 'course', canLoad: [LazyAuthGuard], loadChildren: () => CourseModule },
+  { path: 'lesson', canLoad: [LazyAuthGuard], loadChildren: () => LessonModule }
 ];
 
 @NgModule({
