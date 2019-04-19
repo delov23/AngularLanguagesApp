@@ -13,6 +13,7 @@ import { LessonResolver } from './resolvers/lesson.resolver';
 import { UserService } from './services/user.service';
 import { AdminGuard } from './guards/admin.guard';
 import { UserResolver } from './resolvers/user.resolver';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 @NgModule({
     imports: [
@@ -33,6 +34,11 @@ import { UserResolver } from './resolvers/user.resolver';
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
             multi: true
         },
     ]

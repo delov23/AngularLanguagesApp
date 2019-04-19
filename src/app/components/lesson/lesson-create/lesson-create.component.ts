@@ -22,11 +22,11 @@ export class LessonCreateComponent implements OnInit {
     this.courses$ = this.courseService.getAllCourses();
 
     this.form = this.fb.group({
-      title: [],
-      grammar1: [],
-      grammar2: [],
-      grammar3: [],
-      image: [],
+      title: ['', [Validators.required, Validators.minLength(5)]],
+      grammar1: ['', Validators.required],
+      grammar2: ['', Validators.required],
+      grammar3: ['', Validators.required],
+      image: ['', [Validators.required, Validators.pattern(/^http.{3,}\.(jpg|png)$/)]],
       course: ['', Validators.required],
       words: this.fb.array([ this.createWord() ]),
       test: this.fb.array([ this.createQuestion() ])
@@ -35,18 +35,18 @@ export class LessonCreateComponent implements OnInit {
 
   createWord() {
     return this.fb.group({
-      word: [],
-      translation: []
+      word: ['', Validators.required],
+      translation: ['', Validators.required]
     });
   }
 
   createQuestion() {
     return this.fb.group({
-      question: [],
-      answer: [],
-      a1: [],
-      a2: [],
-      a3: [],
+      question: ['', Validators.required],
+      answer: ['', [Validators.required, Validators.min(1), Validators.max(3)]],
+      a1: ['', Validators.required],
+      a2: ['', Validators.required],
+      a3: ['', Validators.required],
     });
   }
 

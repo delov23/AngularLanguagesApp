@@ -7,6 +7,7 @@ export interface IUser {
     role?: string;
     password?: string;
     hashedPassword?: string;
+    name?: string;
 }
 
 export interface IUserEntity {

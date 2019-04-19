@@ -1,0 +1,8 @@
+a:hover {
+    filter: blur(2px);
+    color: silver;
+}
+
+a {
+    color: transparent;
+}

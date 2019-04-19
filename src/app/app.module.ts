@@ -4,7 +4,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { MaterialModule } from './material.module';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { ToastrModule } from 'ngx-toastr';
+
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { AuthModule } from './components/auth/auth.module';
 import { SharedModule } from './components/shared/shared.module';
@@ -27,7 +31,11 @@ import { LessonModule } from './components/lesson/lesson.module';
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    
     MaterialModule,
+    LoadingBarHttpClientModule,
+    ToastrModule.forRoot(),
+
     SharedModule,
     CoreModule,
     AuthModule,

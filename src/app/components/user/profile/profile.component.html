@@ -1,2 +1,12 @@
-<main class="container">
+<main class="container text-center text-silver">
+  <h1><mat-icon style="font-size: 20pt;">{{user.role === 'Admin' ? 'widgets' : 'person'}}</mat-icon> Hello, {{user.name}} (<i>{{user.username}}</i>)</h1>
+  <h1>Your Recent Courses: </h1>
+  <div class="row fix-row">
+    <div *ngFor="let course of user.courses" class="col-md-3">
+      <a class="no-deco" routerLink="/course/lessons/{{course._id}}">
+        <img src="{{course.flag}}" class="img-thumbnail" />
+        <p>{{course.language}}</p>
+      </a>
+    </div>
+  </div>
 </main>

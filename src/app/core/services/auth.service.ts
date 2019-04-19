@@ -23,6 +23,10 @@ export class AuthService {
     return this.http.post(`${URL}auth/signin`, body);
   }
 
+  logoutUser() {
+    sessionStorage.clear();
+  }
+
   isAuthenticated() {
     return !!sessionStorage.getItem('token');
   }
