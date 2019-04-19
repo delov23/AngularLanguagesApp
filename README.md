@@ -24,11 +24,11 @@ As I mentioned earlier the framework used for the server logic is _express_. The
     - `/lesson/:id`
     - `/lesson/remove/:id`
   * Application
-    - /application/apply
-    - /application/approve/{0 or 1}/:id
-    - /application/:id
-    - /application/all
-    - /application/user/:id
+    - `/application/apply`
+    - `/application/approve/{0 or 1}/:id`
+    - `/application/:id`
+    - `/application/all`
+    - `/application/user/:id`
   * Question - create a question for the test that is in a lesson
     - _Has a reference to the test array in the lesson schema and is used when creating a test in a lesson_
   * Word - create a word for the lesson
