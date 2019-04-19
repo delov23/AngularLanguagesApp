@@ -14,6 +14,7 @@ import { UserService } from './services/user.service';
 import { AdminGuard } from './guards/admin.guard';
 import { UserResolver } from './resolvers/user.resolver';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { SuccessInterceptor } from './interceptors/success.interceptor';
 
 @NgModule({
     imports: [
@@ -41,6 +42,11 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
             useClass: ErrorInterceptor,
             multi: true
         },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: SuccessInterceptor,
+            multi: true
+        }
     ]
 })
 export class CoreModule { }

@@ -1,25 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ICourse } from '../../shared/models/ICourse';
 import { CourseService } from 'src/app/core/services/course.service';
 import { LessonService } from 'src/app/core/services/lesson.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lesson-create',
   templateUrl: './lesson-create.component.html',
   styleUrls: ['./lesson-create.component.css']
 })
-export class LessonCreateComponent implements OnInit {
+export class LessonCreateComponent implements OnInit, OnDestroy {
   form: FormGroup;
   words: FormArray;
   test: FormArray;
-  courses$: Observable<{ message: string; courses: ICourse[]; }>
-  constructor(private fb: FormBuilder, private courseService: CourseService, private lessonService: LessonService, private router: Router) { }
+  courses: ICourse[];
+  courseSubscription: Subscription;
+  constructor(private fb: FormBuilder, private courseService: CourseService, private lessonService: LessonService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.courses$ = this.courseService.getAllCourses();
+    this.courseSubscription = this.courseService.getAllCourses().subscribe((res) => {
+      this.courses = res.courses;
+      this.form.get('course').setValue(this.route.snapshot.queryParams['courseId']);
+    });
 
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(5)]],
@@ -31,6 +35,10 @@ export class LessonCreateComponent implements OnInit {
       words: this.fb.array([ this.createWord() ]),
       test: this.fb.array([ this.createQuestion() ])
     });
+  }
+
+  ngOnDestroy() {
+    this.courseSubscription.unsubscribe();
   }
 
   createWord() {
