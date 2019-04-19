@@ -1,0 +1,25 @@
+<main class="container">
+  <h1 class="text-center text-silver">Apply</h1>
+  <form [formGroup]="form" (submit)="apply()">
+      <mat-form-field style="width: 100%">
+          <input 
+          matInput
+          type="text"
+          formControlName="title" />
+          <mat-hint>Make sure this field includes what is your main language and what are you applying for.</mat-hint>
+          <mat-placeholder class="placeholder">Subject</mat-placeholder>
+      </mat-form-field>
+      
+      <mat-form-field class="float-right" style="width: 100%; margin-top: 15px;">
+        <textarea 
+        matInput
+        rows="4"
+        formControlName="body"></textarea>
+        <mat-hint>At least 30 symbols, describing you and your passions.</mat-hint>
+        <mat-placeholder class="placeholder">Your Motivation</mat-placeholder>
+      </mat-form-field>
+      <div class="text-center">
+        <button [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
+      </div>
+    </form>
+</main>

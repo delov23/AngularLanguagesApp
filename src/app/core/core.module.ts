@@ -15,6 +15,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { UserResolver } from './resolvers/user.resolver';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { SuccessInterceptor } from './interceptors/success.interceptor';
+import { ApplicationService } from './services/application.service';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import { SuccessInterceptor } from './interceptors/success.interceptor';
     ],
     providers: [
         AuthService,
+        ApplicationService,
         CourseService,
         LessonService,
         UserService,

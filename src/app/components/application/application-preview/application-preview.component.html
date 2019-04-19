@@ -1,0 +1,25 @@
+<main class="container">
+  <h1 class="text-light text-center display-4">{{(application$ | async)?.application.title}}</h1>
+  <h4 class="text-light text-center">{{(application$ | async)?.application.body}}</h4>
+  <div *ngIf="(application$ | async)?.application.state === 2 && isAdmin; else userFunctionality;">
+    <button (click)="approve(0)" mat-raised-button class="bg-danger"><mat-icon>thumb_down</mat-icon> Disapprove</button>
+    <button (click)="approve(1)" mat-raised-button class="bg-contrast-ng float-right">Approve <mat-icon>thumb_up</mat-icon></button>
+  </div>
+  <ng-template #userFunctionality>
+    <mat-card *ngIf="(application$ | async)?.application.state === 2" class="bg-warning">
+      <mat-card-title class="text-center text-dark">
+        THE APPLICATION IS BEING PROCESSED.
+      </mat-card-title>
+    </mat-card>
+    <mat-card *ngIf="(application$ | async)?.application.state === 0" class="bg-danger">
+      <mat-card-title class="text-center text-light">
+        THE APPLICATION IS DISAPPROVED
+      </mat-card-title>
+    </mat-card>
+    <mat-card *ngIf="(application$ | async)?.application.state === 1" class="bg-success">
+      <mat-card-title class="text-center text-light">
+        THE APPLICATION IS APPROVED!
+      </mat-card-title>
+    </mat-card>
+  </ng-template>
+</main>

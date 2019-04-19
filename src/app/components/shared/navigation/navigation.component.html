@@ -2,7 +2,7 @@
   <div flexLayoutAlign="start">
     <a class="navbar-brand" routerLink="/">Lingo</a>
     <span *ngIf="isAdmin && isAuth">
-      <button routerLink="/applications/all" class="navbar-item" mat-button><mat-icon>inbox</mat-icon> Requests</button>
+      <button routerLink="/application/admin" class="navbar-item" mat-button><mat-icon>inbox</mat-icon> Requests</button>
       <button routerLink="/course/create" class="navbar-item" mat-button ><mat-icon>library_add</mat-icon> Course</button>
       <button routerLink="/lesson/create" class="navbar-item" mat-button ><mat-icon>library_add</mat-icon> Lesson</button>
     </span>
@@ -13,6 +13,7 @@
   </div>
   <div flexLayoutAlign="end">
     <span *ngIf="isAuth; else anonymous">
+      <button routerLink="/application/user" class="navbar-item" mat-icon-button><mat-icon>inbox</mat-icon></button>
       <button routerLink="/user/profile" class="navbar-item" mat-icon-button ><mat-icon>person</mat-icon></button>
       <button (click)="logout()" class="navbar-item" mat-icon-button ><mat-icon>exit_to_app</mat-icon></button>
     </span>

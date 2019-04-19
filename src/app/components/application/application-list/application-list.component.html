@@ -1,0 +1,16 @@
+<main class="container">
+  <br />
+  <div class="row fix-row margin-top">
+    <div class="col-md-12" *ngFor="let application of (applications$ | async)?.applications">
+      <h3 *ngIf="application.state === 2 && isAdmin" class="text-light">
+        {{application.title}}
+        <button routerLink="/application/preview/{{application._id}}" mat-raised-button class="bg-contrast-ng float-right">Preview</button>
+      </h3>
+      <h3 *ngIf="!isAdmin" class="text-light">
+        {{application.title}}
+        <button routerLink="/application/preview/{{application._id}}" mat-raised-button class="bg-contrast-ng float-right">Preview</button>
+      </h3>
+      
+    </div>
+  </div>
+</main>

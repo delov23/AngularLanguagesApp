@@ -15,12 +15,16 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(req)
             .pipe(
                 catchError((err: HttpErrorResponse) => {
+                    console.log(err);
                     if (err.status === 401 || err.status === 403) {
                         this.toastr.error('You are not authorised!', 'Error!');
                         this.authService.logoutUser();
                         this.router.navigate(['/login']);
                     } else if (err.status === 400 || err.status === 422) {
                         this.toastr.error('Please, check the form requirements and submit the form again!', 'Error!');
+                    } else if (err.status === 404) {
+                        this.toastr.error('The entity is not found!', 'Error!');
+                        this.router.navigate(['/dashboard']);
                     }
                  
                     return throwError(err);

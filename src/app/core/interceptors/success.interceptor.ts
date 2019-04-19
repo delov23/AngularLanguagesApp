@@ -21,6 +21,8 @@ export class SuccessInterceptor implements HttpInterceptor {
                     message = 'Created Successfully.';
                 } else if (req.url.includes('remove')) {
                     this.toastrService.info('Removed Successfully.');
+                } else if (req.url.endsWith('apply')) {
+                    message = 'Applied Successfully. Your requested will be reviewed as soon as possible.';
                 }
                 if (message) this.toastrService.success(message);
             }

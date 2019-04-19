@@ -11,6 +11,7 @@ import { CourseModule } from './components/course/course.module';
 import { LessonModule } from './components/lesson/lesson.module';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { UserResolver } from './core/resolvers/user.resolver';
+import { ApplicationModule } from './components/application/application.module';
 
 // Lazy Loading Issue
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'auth', canLoad: [LazyAnonymousGuard], loadChildren: () => AuthModule },
   { path: 'course', canLoad: [LazyAuthGuard], loadChildren: () => CourseModule },
   { path: 'lesson', canLoad: [LazyAuthGuard], loadChildren: () => LessonModule },
+  { path: 'application', canLoad: [LazyAuthGuard], loadChildren: () => ApplicationModule },
   { path: 'user/profile', canLoad: [AuthGuard], component: ProfileComponent, resolve: { user: UserResolver } }
 ];
 
