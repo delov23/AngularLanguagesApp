@@ -13,7 +13,7 @@
   </div>
   <div flexLayoutAlign="end">
     <span *ngIf="isAuth; else anonymous">
-      <button routerLink="/application/user" class="navbar-item" mat-icon-button><mat-icon>inbox</mat-icon></button>
+      <button routerLink="/application/user" class="navbar-item" mat-button>My Requests <mat-icon>inbox</mat-icon></button>
       <button routerLink="/user/profile" class="navbar-item" mat-icon-button ><mat-icon>person</mat-icon></button>
       <button (click)="logout()" class="navbar-item" mat-icon-button ><mat-icon>exit_to_app</mat-icon></button>
     </span>

@@ -25,7 +25,7 @@ module.exports = {
   getApplications: async (req, res, next) => {
     let approved = await isAdmin(req);
     if (approved) {
-      Application.find({})
+      Application.find({ state: 2 })
       .then((applications) => {
         res
           .status(200)

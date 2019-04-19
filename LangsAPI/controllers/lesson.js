@@ -60,9 +60,7 @@ module.exports = {
       });
   },
   createLesson: async (req, res, next) => {
-    // Validate post using express-validator
-    // Return 422 with errors array if something went wrong
-    let approved = await isAdmin(req);   
+    let approved = await isAdmin(req);
     if (validatePost(req, res) && approved) {
         const { course, title, image, video, words: wordsJSON, grammar, test: testJSON } = req.body;
         let words = JSON.parse(wordsJSON);
@@ -71,6 +69,7 @@ module.exports = {
         let wordsIds = [];
         
         for (const w of words) {
+          console.log(w);
           let { word, translation } = w;
           let newWord = await Word.create({ word, translation })
           wordsIds.push(newWord._id);

@@ -10,7 +10,9 @@
         {{application.title}}
         <button routerLink="/application/preview/{{application._id}}" mat-raised-button class="bg-contrast-ng float-right">Preview</button>
       </h3>
-      
     </div>
   </div>
+  <h2 *ngIf="(applications$ | async)?.applications.length === 0" class="text-center text-light">
+    No Applications.
+  </h2>
 </main>
