@@ -55,12 +55,14 @@ export class LessonCreateComponent implements OnInit, OnDestroy {
     });
   }
 
-  addWord() {
+  addWord(ev: Event) {
+    ev.preventDefault();
     this.words = this.form.get('words') as FormArray;
     this.words.push(this.createWord());
   }
 
-  addQuestion() {
+  addQuestion(ev: Event) {
+    ev.preventDefault();
     this.test = this.form.get('test') as FormArray;
     this.test.push(this.createQuestion());
   }

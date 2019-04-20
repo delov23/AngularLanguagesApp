@@ -54,7 +54,7 @@
       <mat-placeholder class="placeholder">Grammar Example</mat-placeholder>
     </mat-form-field>
     
-    <button mat-raised-button color="primary" (click)="addWord()">Add Word</button>
+    <button mat-raised-button color="primary" (click)="addWord($event)">Add Word</button>
     <div formArrayName="words" *ngFor="let word of form.get('words')['controls']; let i = index;" fxLayout="row" style="margin-top: 10px">
       <div formGroupName="{{i}}">
         <mat-form-field class="float-left" style="width: 49%">
@@ -74,7 +74,7 @@
       </div>
     </div>
 
-    <button mat-raised-button color="primary" (click)="addQuestion()">Add Question</button>
+    <button mat-raised-button color="primary" (click)="addQuestion($event)">Add Question</button>
     <div formArrayName="test" *ngFor="let question of form.get('test')['controls']; let i = index;" fxLayout="row" style="margin-top: 10px">
       <div formGroupName="{{i}}">
         <mat-form-field class="float-left" style="width: 49%">
@@ -120,7 +120,7 @@
 
     <br />
     <div class="text-center">
-      <button [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
+      <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Submit</button>
     </div>
   </form>
   <br />
