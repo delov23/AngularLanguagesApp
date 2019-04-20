@@ -15,13 +15,15 @@ import { LandingComponent } from './components/home/landing/landing.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 import { SharedModule } from './components/shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { NotFoundComponent } from './components/home/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

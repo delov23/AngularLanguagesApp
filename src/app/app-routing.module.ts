@@ -8,6 +8,7 @@ import { LazyAnonymousGuard } from './core/guards/anonymous-lazy.guard';
 import { LazyAuthGuard } from './core/guards/auth-lazy.guard';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { UserResolver } from './core/resolvers/user.resolver';
+import { NotFoundComponent } from './components/home/not-found/not-found.component';
 
 // Lazy Loading Issue
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'course', canLoad: [LazyAuthGuard], loadChildren: './components/course/course.module#CourseModule' },
   { path: 'lesson', canLoad: [LazyAuthGuard], loadChildren: './components/lesson/lesson.module#LessonModule' },
   { path: 'application', canLoad: [LazyAuthGuard], loadChildren: './components/application/application.module#ApplicationModule' },
-  { path: 'user/profile', canActivate: [AuthGuard], component: ProfileComponent, resolve: { user: UserResolver } }
+  { path: 'user/profile', canActivate: [AuthGuard], component: ProfileComponent, resolve: { user: UserResolver } },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
