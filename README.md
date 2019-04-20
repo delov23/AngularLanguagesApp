@@ -12,23 +12,23 @@ Lingo is an application that aims to teach one a new language in a fun and creat
 ### Type `node index` in the console of the API folder to start it
 As I mentioned earlier the framework used for the server logic is _express_. The API works on port **9999** and has the following functionalities: 
   * User:
-    - `/auth/signup` (Authentication route)
-    - `/auth/signin` (Authentication route)
-    - `/user/profile`
-    - `/user/addCourse/:id`
+    - POST `/auth/signup` (Authentication route)
+    - POST `/auth/signin` (Authentication route)
+    - GET `/user/profile`
+    - POST `/user/addCourse`
   * Course:
-    - `/course/all`
-    - `/course/create`
+    - GET `/course/all`
+    - POST `/course/create`
   * **Lesson** - create, delete and preview a lesson
-    - `/lesson/findByCourse/:id`
-    - `/lesson/:id`
-    - `/lesson/remove/:id`
+    - GET `/lesson/findByCourse/:id`
+    - GET `/lesson/:id`
+    - DELETE `/lesson/remove/:id`
   * Application
-    - `/application/apply`
-    - `/application/approve/{0 or 1}/:id`
-    - `/application/:id`
-    - `/application/all`
-    - `/application/user/:id`
+    - POST `/application/apply`
+    - PUT `/application/approve/{0 or 1}/:id`
+    - GET `/application/:id`
+    - GET `/application/all`
+    - GET `/application/user/:id`
   * Question - create a question for the test that is in a lesson
     - _Has a reference to the test array in the lesson schema and is used when creating a test in a lesson_
   * Word - create a word for the lesson
