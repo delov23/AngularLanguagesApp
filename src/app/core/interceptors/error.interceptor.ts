@@ -25,6 +25,8 @@ export class ErrorInterceptor implements HttpInterceptor {
                     } else if (err.status === 404) {
                         this.toastr.error('The entity is not found!', 'Error!');
                         this.router.navigate(['/dashboard']);
+                    } else {
+                        this.toastr.error('Something went wrong!', 'Error!');
                     }
                  
                     return throwError(err);

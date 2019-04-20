@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IApplication } from '../../shared/models/IApplication';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ApplicationService } from 'src/app/core/services/application.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -14,6 +14,8 @@ export class ApplicationPreviewComponent implements OnInit {
   application$: Observable<{message: string; application: IApplication }>;
   isAdmin = false;
   id: string;
+  subscription: Subscription;
+
   constructor(private router: Router, private authService: AuthService, private applicationService: ApplicationService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -23,9 +25,10 @@ export class ApplicationPreviewComponent implements OnInit {
   }
 
   approve(value: number) {
-    this.applicationService.approve(value, this.id)
+    this.subscription = this.applicationService.approve(value, this.id)
       .subscribe((res) => {
-        this.router.navigate(['/application/admin'])
+        this.subscription.unsubscribe();
+        this.router.navigate(['/application/admin']);
       })
   }
 

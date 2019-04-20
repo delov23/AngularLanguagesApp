@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ICourse } from '../../shared/models/ICourse';
 import { CourseService } from 'src/app/core/services/course.service';
 import { LessonService } from 'src/app/core/services/lesson.service';
@@ -16,13 +16,14 @@ export class LessonCreateComponent implements OnInit, OnDestroy {
   words: FormArray;
   test: FormArray;
   courses: ICourse[];
-  courseSubscription: Subscription;
+  courseSub: Subscription;
+  doneSub: Subscription;
   constructor(private fb: FormBuilder, private courseService: CourseService, private lessonService: LessonService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.courseSubscription = this.courseService.getAllCourses().subscribe((res) => {
+    this.courseSub = this.courseService.getAllCourses().subscribe((res) => {
       this.courses = res.courses;
-      this.form.get('course').setValue(this.route.snapshot.queryParams['courseId']);
+      this.form.get('course').setValue(this.route.snapshot.queryParams['courseId'] || '');
     });
 
     this.form = this.fb.group({
@@ -35,10 +36,6 @@ export class LessonCreateComponent implements OnInit, OnDestroy {
       words: this.fb.array([ this.createWord() ]),
       test: this.fb.array([ this.createQuestion() ])
     });
-  }
-
-  ngOnDestroy() {
-    this.courseSubscription.unsubscribe();
   }
 
   createWord() {
@@ -78,10 +75,15 @@ export class LessonCreateComponent implements OnInit, OnDestroy {
       words: JSON.stringify(words),
       test: JSON.stringify(test)
     }
-    this.lessonService.createLesson(body)
+    this.doneSub = this.lessonService.createLesson(body)
       .subscribe((res) => {
+        this.doneSub.unsubscribe();
         this.router.navigate(['/course/lessons', course]);
-      })
+      });
+  }
+
+  ngOnDestroy() {
+    this.courseSub.unsubscribe();
   }
 
 }

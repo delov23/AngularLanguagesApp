@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApplicationService } from 'src/app/core/services/application.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-application-create',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ApplicationCreateComponent implements OnInit {
   form: FormGroup;
+  subscription: Subscription;
 
   constructor(private fb: FormBuilder, private applicationService: ApplicationService, private router: Router) { }
 
@@ -21,9 +23,10 @@ export class ApplicationCreateComponent implements OnInit {
   }
 
   apply() {
-    this.applicationService.apply(this.form.value)
+    this.subscription = this.applicationService.apply(this.form.value)
       .subscribe((res) => {
-        this.router.navigate(['/dashboard'/* /application/user */]);
+        this.subscription.unsubscribe();
+        this.router.navigate(['/application/user']);
       });
   }
 

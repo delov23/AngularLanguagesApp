@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ILesson } from '../../shared/models/ILesson';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LessonService } from 'src/app/core/services/lesson.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-lesson-remove',
@@ -11,6 +12,8 @@ import { LessonService } from 'src/app/core/services/lesson.service';
 export class LessonRemoveComponent implements OnInit {
   lesson: ILesson;
   lessonId: string;
+  subscription: Subscription;
+
   constructor(private route: ActivatedRoute, private lessonSevice: LessonService, private router: Router) { }
 
   ngOnInit() {
@@ -19,8 +22,9 @@ export class LessonRemoveComponent implements OnInit {
   }
 
   removeLesson() {
-    this.lessonSevice.removeLessonById(this.lessonId)
+    this.subscription = this.lessonSevice.removeLessonById(this.lessonId)
       .subscribe((res) => {
+        this.subscription.unsubscribe();
         this.router.navigate(['/course/lessons', this.lesson.course._id]);
       })
   }

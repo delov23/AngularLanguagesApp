@@ -14,12 +14,9 @@ const URLS_DATA = [
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent {
   imageUrls: string[] = URLS_DATA;
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
+  
 }

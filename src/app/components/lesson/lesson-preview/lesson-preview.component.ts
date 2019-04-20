@@ -3,6 +3,7 @@ import { ILesson } from '../../shared/models/ILesson';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-lesson-preview',
@@ -12,6 +13,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class LessonPreviewComponent implements OnInit {
   lesson: ILesson;
   selectedIndex = 0;
+  subscription: Subscription;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private authService: AuthService) {
   }
@@ -25,10 +27,10 @@ export class LessonPreviewComponent implements OnInit {
   }
 
   completeLesson() {
-    this.userService.userAddCourse(this.lesson.course._id, this.authService.userId)
+    this.subscription = this.userService.userAddCourse(this.lesson.course._id, this.authService.userId)
       .subscribe((res) => {
+        this.subscription.unsubscribe();
         this.router.navigate(['/dashboard']);
-        // ADD TOASTR NOTIFICATIONS
       })
   }
 

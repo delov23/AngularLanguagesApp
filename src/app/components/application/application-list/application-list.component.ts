@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IApplication } from '../../shared/models/IApplication';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ApplicationService } from 'src/app/core/services/application.service';
 
@@ -13,7 +13,7 @@ import { ApplicationService } from 'src/app/core/services/application.service';
 export class ApplicationListComponent implements OnInit {
   applications$: Observable<{ message: string; applications: IApplication[] }>;
   isAdmin: boolean = false;
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService, private applicationService: ApplicationService) { }
+  constructor(private route: ActivatedRoute, private authService: AuthService, private applicationService: ApplicationService) { }
 
   ngOnInit() {
     if (this.route.snapshot.toString().includes('admin') && this.authService.isAdmin()) {

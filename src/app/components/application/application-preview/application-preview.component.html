@@ -8,17 +8,17 @@
   <ng-template #userFunctionality>
     <mat-card *ngIf="(application$ | async)?.application.state === 2" class="bg-warning">
       <mat-card-title class="text-center text-dark">
-        THE APPLICATION IS BEING PROCESSED.
+        The application is being processed.
       </mat-card-title>
     </mat-card>
     <mat-card *ngIf="(application$ | async)?.application.state === 0" class="bg-danger">
       <mat-card-title class="text-center text-light">
-        THE APPLICATION IS DISAPPROVED
+        The application has been disapproved.
       </mat-card-title>
     </mat-card>
     <mat-card *ngIf="(application$ | async)?.application.state === 1" class="bg-success">
       <mat-card-title class="text-center text-light">
-        THE APPLICATION IS APPROVED!
+        Your application has been approved! You are now an administrator.
       </mat-card-title>
     </mat-card>
   </ng-template>

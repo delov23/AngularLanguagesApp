@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 import { IUserEntity } from '../../shared/models/IUser';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,8 @@ import { IUserEntity } from '../../shared/models/IUser';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  subscription: Subscription;
+
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -21,10 +24,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.loginUser(this.form.value)
+    this.subscription = this.authService.loginUser(this.form.value)
       .subscribe((user: IUserEntity) => {
         this.authService.saveUser(user);
+        this.subscription.unsubscribe();
         this.router.navigate(['/']);
       });
   }
+
 }

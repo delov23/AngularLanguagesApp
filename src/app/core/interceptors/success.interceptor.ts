@@ -10,7 +10,7 @@ export class SuccessInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         return next.handle(req).pipe(tap((event: HttpEvent<any>) => {
             if (event instanceof HttpResponse) {
-                let message;
+                let message: string;
                 if (req.url.endsWith('signup')) {
                     message = 'Successful Registration. You may now log in.';
                 } else if (req.url.endsWith('signin')) {
@@ -24,7 +24,10 @@ export class SuccessInterceptor implements HttpInterceptor {
                 } else if (req.url.endsWith('apply')) {
                     message = 'Applied Successfully. Your requested will be reviewed as soon as possible.';
                 }
-                if (message) this.toastrService.success(message);
+
+                if (message) {
+                    this.toastrService.success(message);
+                }
             }
         }));
     }

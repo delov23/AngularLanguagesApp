@@ -1,23 +1,23 @@
 <main class="container">
   <h1 class="text-center text-silver">Create Course</h1>
   <form [formGroup]="form" (submit)="createCourse()">
-      <mat-form-field style="width: 100%">
-          <input 
-          matInput
-          type="text"
-          formControlName="language" />
-        <mat-placeholder class="placeholder">Language</mat-placeholder>
-      </mat-form-field>
-      
-        <mat-form-field style="width: 100%">
-          <input 
-          matInput
-          type="text"
-          formControlName="flag" />
-          <mat-placeholder class="placeholder">Flag URL</mat-placeholder>
-        </mat-form-field>
-      <div class="text-center">
-        <button [disabled]="form.invalid" mat-raised-button color="primary">Create Course</button>
-      </div>
-    </form>
+    <mat-form-field style="width: 100%">
+        <input 
+        matInput
+        type="text"
+        formControlName="language" />
+      <mat-placeholder class="placeholder">Language</mat-placeholder>
+    </mat-form-field>
+    
+    <mat-form-field style="width: 100%">
+      <input 
+      matInput
+      type="text"
+      formControlName="flag" />
+      <mat-placeholder class="placeholder">Flag URL</mat-placeholder>
+    </mat-form-field>
+    <div class="text-center">
+      <button [disabled]="form.invalid" mat-raised-button color="primary">Create Course</button>
+    </div>
+  </form>
 </main>

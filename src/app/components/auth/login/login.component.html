@@ -1,23 +1,23 @@
 <main class="container">
   <h1 class="text-center text-silver">Login</h1>
   <form [formGroup]="form" (submit)="login()">
-      <mat-form-field style="width: 100%">
-          <input 
-          matInput
-          type="text"
-          formControlName="username" />
-        <mat-placeholder class="placeholder">Username</mat-placeholder>
-      </mat-form-field>
-      
-        <mat-form-field class="float-right" style="width: 100%">
-          <input 
-          matInput
-          type="password"
-          formControlName="password" />
-          <mat-placeholder class="placeholder">Password</mat-placeholder>
-        </mat-form-field>
-      <div class="text-center">
-        <button [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
-      </div>
-    </form>
+    <mat-form-field style="width: 100%">
+        <input 
+        matInput
+        type="text"
+        formControlName="username" />
+      <mat-placeholder class="placeholder">Username</mat-placeholder>
+    </mat-form-field>
+    
+    <mat-form-field class="float-right" style="width: 100%">
+      <input 
+      matInput
+      type="password"
+      formControlName="password" />
+      <mat-placeholder class="placeholder">Password</mat-placeholder>
+    </mat-form-field>
+    <div class="text-center">
+      <button [disabled]="form.invalid" mat-raised-button color="primary">Submit</button>
+    </div>
+  </form>
 </main>

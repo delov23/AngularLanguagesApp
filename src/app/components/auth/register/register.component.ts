@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 const namePattern = /^[A-Z][a-z]+$/;
 const passwordPattern = /^[\w0-9]{5,}$/
@@ -13,6 +14,8 @@ const passwordPattern = /^[\w0-9]{5,}$/
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
+  subscription: Subscription;
+
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -30,9 +33,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.authService.registerUser(this.form.value)
+    this.subscription = this.authService.registerUser(this.form.value)
       .subscribe((res) => {
+        this.subscription.unsubscribe();
         this.router.navigate(['/auth/login']);
       });
   }
+
 }
