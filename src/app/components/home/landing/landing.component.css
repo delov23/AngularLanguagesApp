@@ -33,3 +33,23 @@
   .img-hover:hover {
       filter: blur(5px);
   }
+
+  div.animated-arrow {
+    margin-left: auto;
+    margin-right: auto;
+    transform: rotate(45deg);
+    width: 50px;
+    height: 50px;
+    border-bottom: 4px solid #DE3163;
+    border-right: 4px solid #DE3163;
+    position: relative;
+    animation-name: example;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes example {
+    0%  { top: 0px; }
+    35% { top: 30px; }
+    70% { top: 0px; }
+  }
