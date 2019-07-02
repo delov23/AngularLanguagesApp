@@ -43,19 +43,19 @@ The used framework for the front-end is _Angular_. These are the highlights from
     - Dynamic addition of words and questions
   * Preview Lesson:
     - A lesson has three stages and the `/lesson/preview/:id` is the route they can be found in. 
-    - First, it shows th vocabulary secion, then the grammar one. 
+    - First, it shows th vocabulary section, then the grammar one. 
     - Finally, a test (quiz) is displayed.
     - The test has bonus functionality - to show whether an answer is correct or wrong.
   * User Profile:
     - The user profile shows the basic information about a registered person and their courses. A course is added to one's profile when they have completed at least one lesson of it.
   * Preview Lessons in a Course:
-    - Dynamic page that shows all the lessons in a course. If the user is admin, they can manage the lessons (remove them).
+    - Dynamic page that shows all the lessons in a course. If the user is an admin, they can manage the lessons (remove them).
   * Notifications and Basic Design Concept:
     - I have used toastr as a notification helper.
     - Material + Bootstrap for the design
-    - ngx-loading-bar for HTTP requests 
+    - ngx-loading-bar for a loading bar when HTTP requests take place
   * Core Module:
     - Services for making HTTP requests to the API
     - Guards for **lazy loading** and restricted areas
-    - Interceptors that interrupt HTTP requests to notify the user/add headers to certain requests
+    - Interceptors that interrupt HTTP requests to notify the user (via toastr) and add headers to certain requests
     - Resolvers for dealing with the HTTP request before the view is initialised
